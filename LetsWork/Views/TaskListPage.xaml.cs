@@ -34,9 +34,14 @@ namespace LetsWork
 
 			//listView.ItemsSource = await App.TaskManager.GetTasksAsync();
 			listView.ItemsSource = await taskManager.GetAll();
+		}
 
-
-
+		void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+		{
+			var task = e.SelectedItem as Task;
+			var taskPage = new TaskPage();
+			taskPage.BindingContext = task;
+			Navigation.PushAsync(taskPage);
 		}
     }
 }
