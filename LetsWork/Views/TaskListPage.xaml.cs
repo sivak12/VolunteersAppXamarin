@@ -43,5 +43,22 @@ namespace LetsWork
 			taskPage.BindingContext = task;
 			Navigation.PushAsync(taskPage);
 		}
+
+
+
+		async void OnRefresh(object sender, EventArgs e)
+		{
+
+			listView.ItemsSource = await taskManager.GetAll();
+
+			//var bookCollection = await manager.GetAll();
+
+			//foreach (Book book in bookCollection)
+			//{
+			//	if (books.All(b => b.ISBN != book.ISBN))
+			//		books.Add(book);
+			//}
+		}
+
     }
 }

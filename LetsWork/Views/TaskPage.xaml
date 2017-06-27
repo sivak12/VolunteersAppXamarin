@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LetsWork.TaskPage" Title="Task Details">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LetsWork.TaskPage" Title="Activity Details">
 	<ContentPage.Content>
         <StackLayout VerticalOptions="StartAndExpand">
 
             <Label Text="Name" />
-            <Entry x:Name="nameEntry" Text="{Binding Path=Name}" Placeholder="task name" />
-            
+            <Entry x:Name="nameEntry" Text="{Binding Path=Name}" Focused="nameEntry_Focused" />
+
             <Label Text="Description" />
-            <Entry x:Name="descriptionEntry" Text="{Binding Path=Description}" />
+            <Entry x:Name="descriptionEntry" Text="{Binding Path=Description}" Focused="descriptionEntry_Focused" />
             
             <Label Text="Coordinator" />
-            <Entry x:Name="coordinatorName" Text="{Binding Path=CoordinatorName}" />
+            <Entry x:Name="coordinatorName" Text="{Binding Path=CoordinatorName}" Focused="coordinatorName_Focused" />
 
-            <Label Text="CoordinatorPhone" />
-            <Entry x:Name="coordinatorPhone" Text="{Binding Path=CoordinatorPhone}" />
+            <Label Text="Coordinator Phone" />
+            <Entry x:Name="coordinatorPhone" Text="{Binding Path=CoordinatorPhone}" Focused="coordinatorPhone_Focused" />
 
-            <Label Text="Work Start Date" />
-            <Entry x:Name="startDate" Text="{Binding Path=StartDate}" />
+            <Label Text="Start Date" />
+            <Entry x:Name="startDate" Text="{Binding Path=StartDate}" Focused="startDate_Focused" />
 
-             <Label Text="Volunteers Required" />
-             <Entry x:Name="volunteersRequired" Text="{Binding Path=VolunteersRequired}" />
+             <Label Text="Slots Open" />
+             <Entry x:Name="volunteersRequired" Text="{Binding Path=VolunteersRequired}" Focused="volunteersRequired_Focused" />
 
            <!-- <Button Text="Save" Clicked="OnSaveActivated" />
             <Button Text="Delete" Clicked="OnDeleteActivated" />
             <Button Text="Speak" Clicked="OnSpeakActivated" /> -->
 
-            <Button Text="Cancel" Clicked="OnCancelActivated" />
+            <Button Text="Ok" Clicked="OnCancelActivated" />
 
         </StackLayout>
 
