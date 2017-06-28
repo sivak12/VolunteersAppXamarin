@@ -9,8 +9,7 @@ namespace LetsWork
     public class TaskManager
     {
 
-        const string Url = "http://volunteersapp.azurewebsites.net/api/task/";
-
+        const string Url = "http://letswork.azurewebsites.net/api/task/";
 
 		private async Task<HttpClient> GetClient()
 		{

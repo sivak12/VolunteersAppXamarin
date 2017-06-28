@@ -1,6 +1,8 @@
 ﻿using System;
 
 using Xamarin.Forms;
+using Plugin.Connectivity;
+using Plugin.Connectivity.Abstractions;
 
 namespace LetsWork
 {
@@ -8,31 +10,29 @@ namespace LetsWork
     {
         public App()
         {
-            // The root page of your application
-            //var content = new ContentPage
-            //{
-            //    Title = "LetsWork",
-            //    Content = new StackLayout
-            //    {
-            //        VerticalOptions = LayoutOptions.Center,
-            //        Children = {
-            //            new Label {
-            //                HorizontalTextAlignment = TextAlignment.Center,
-            //                Text = "Welcome to Xamarin Forms!"
-            //            }
-            //        }
-            //    }
-            //};
 
-            //MainPage = new NavigationPage(content);
-			MainPage = new NavigationPage(new TaskListPage());
+			//MainPage = new NavigationPage(content);
+			MainPage = CrossConnectivity.Current.IsConnected
+				? (Page) new NavigationPage(new TaskListPage())
+				: new NoNetworkPage();
 
 		}
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+			// Handle when your app starts
+			CrossConnectivity.Current.ConnectivityChanged += HandleConnectivityChanged;
         }
+
+
+		void HandleConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
+		{
+			Type currentPage = this.MainPage.GetType();
+            if (e.IsConnected && currentPage != typeof(TaskListPage))
+                this.MainPage = new NavigationPage(new TaskListPage());
+			else if (!e.IsConnected && currentPage != typeof(NoNetworkPage))
+				this.MainPage = new NoNetworkPage();
+		}
 
         protected override void OnSleep()
         {

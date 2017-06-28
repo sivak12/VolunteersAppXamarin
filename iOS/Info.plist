@@ -6,8 +6,6 @@
 	<string>Let&apos;s Work</string>
 	<key>CFBundleName</key>
 	<string>Let&apos;s Work</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.volunteers.letswork</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -42,5 +40,7 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.volunteers.letswork</string>
 </dict>
 </plist>
