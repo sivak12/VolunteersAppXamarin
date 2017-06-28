@@ -11,7 +11,7 @@ namespace LetsWork
 			BackgroundColor = Color.FromRgb(0xf0, 0xf0, 0xf0);
 			Content = new Label()
 			{
-				Text = "No Network Connection Available",
+				Text = "Please connect to internet",
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
 				TextColor = Color.FromRgb(0x40, 0x40, 0x40),

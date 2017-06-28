@@ -29,7 +29,8 @@ namespace LetsWork
 		{
 			Type currentPage = this.MainPage.GetType();
             if (e.IsConnected && currentPage != typeof(TaskListPage))
-                this.MainPage = new NavigationPage(new TaskListPage());
+                //this.MainPage = new NavigationPage(new TaskListPage());
+			    this.MainPage = new TaskListPage();
 			else if (!e.IsConnected && currentPage != typeof(NoNetworkPage))
 				this.MainPage = new NoNetworkPage();
 		}
