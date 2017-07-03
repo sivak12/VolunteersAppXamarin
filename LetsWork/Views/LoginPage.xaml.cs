@@ -5,6 +5,8 @@ namespace LetsWork
 {
 	public partial class LoginPage : ContentPage
 	{
+		readonly LoginUserManager loginUserManager = new LoginUserManager();
+
 		public LoginPage()
 		{
 			InitializeComponent();
@@ -15,68 +17,16 @@ namespace LetsWork
 			await Navigation.PushAsync(new SignUpPage());
 		}
 
-		//async void OnLoginButtonClicked(object sender, EventArgs e)
-		//{
-		//	//var user = new User
-		//	//{
-		//	//	Username = usernameEntry.Text,
-		//	//	Password = passwordEntry.Text
-		//	//};
-
-		//	//var isValid = AreCredentialsCorrect(user);
-		//	//if (isValid)
-		//	//{
-		//	//	App.IsUserLoggedIn = true;
-		//	//	Navigation.InsertPageBefore(new MainPage(), this);
-		//	//	await Navigation.PopAsync();
-		//	//}
-		//	//else
-		//	//{
-		//	//	messageLabel.Text = "Login failed";
-		//	//	passwordEntry.Text = string.Empty;
-		//	//}
-		//}
-
-		//bool AreCredentialsCorrect(User user)
-		//{
-		//	//return user.Username == Constants.Username && user.Password == Constants.Password;
-		//}
-
-
-		//async void OnLoginButtonClicked(object sender, EventArgs e)
-		//{
-		//	var user = new User
-		//	{
-		//		Username = usernameEntry.Text,
-		//		Password = passwordEntry.Text
-		//	};
-
-		//	var isValid = AreCredentialsCorrect(user);
-		//	if (isValid)
-		//	{
-		//		App.IsUserLoggedIn = true;
-		//		Navigation.InsertPageBefore(new MainPage(), this);
-		//		await Navigation.PopAsync();
-		//	}
-		//	else
-		//	{
-		//		messageLabel.Text = "Login failed";
-		//		passwordEntry.Text = string.Empty;
-		//	}
-		//}
-
-
 		async void OnLoginButtonClicked(object sender, EventArgs e)
 		{
             var user = new LoginUser
 			{
-				Name = usernameEntry.Text,
+				Username = usernameEntry.Text,
 				Password = passwordEntry.Text
 			};
 
-            //var isValid = AreCredentialsCorrect(user);
-            var isValid = true;
-            if (isValid)
+            var isValid = AreCredentialsCorrectAsync(user);
+            if (await isValid)
 			{
 				App.IsUserLoggedIn = true;
 				Navigation.InsertPageBefore(new TaskListPage(), this);
@@ -89,18 +39,21 @@ namespace LetsWork
 			}
 		}
 
+        async System.Threading.Tasks.Task<bool> AreCredentialsCorrectAsync(LoginUser user)
+        {
+            
+            LoginUser existingUser = await loginUserManager.CheckUser(user);
 
-		//bool AreCredentialsCorrect(LoginUser user)
-		//{
-		//	////return user.Username == Constants.Username && user.Password == Constants.Password;
-		//	//HttpClient client = await GetClient();
+            if ((existingUser != null) && existingUser.Password.Equals(user.Password))
+                return true;
+
+            return false;
+
+        }
 
 
-		//}
 
 
 
-
-	
-	}
+    }
 }

@@ -19,22 +19,11 @@ namespace LetsWork
 		{
 			var loginUser = new LoginUser()
 			{
-				Name = usernameEntry.Text,
+				Username = usernameEntry.Text,
 				Password = passwordEntry.Text,
 				Email = emailEntry.Text
 			};
-
-			// Sign up logic goes here
-
-			
-            //await loginUserManager.Add(loginUser);
-
-
-			//Book book = await manager.Add(title, author, genre);
-			//books.Add(book);
-
-
-
+		
 			var signUpSucceeded = AreDetailsValid(loginUser);
 			if (signUpSucceeded)
 			{
