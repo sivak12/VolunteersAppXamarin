@@ -10,6 +10,8 @@ namespace LetsWork
     {
 
 		public static bool IsUserLoggedIn { get; set; }
+		public static string Username { get; set; }
+
 
 		public App()
         {

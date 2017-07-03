@@ -29,6 +29,8 @@ namespace LetsWork
             if (await isValid)
 			{
 				App.IsUserLoggedIn = true;
+                App.Username = usernameEntry.Text;
+
 				Navigation.InsertPageBefore(new TaskListPage(), this);
 				await Navigation.PopAsync();
 			}

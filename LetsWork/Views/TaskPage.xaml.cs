@@ -10,36 +10,15 @@ namespace LetsWork
         public TaskPage()
         {
             InitializeComponent();
-        }
+			labelUsername.Text = App.Username;
+
+		}
 
 
 		void OnCancelActivated(object sender, EventArgs e)
 		{
 			Navigation.PopAsync();
 		}
-
-
-
-		//protected void removeFocus(object sender, FocusEventArgs e)
-		//{
-  //          nameEntry.Focus();
-		//	nameEntry.Unfocus();
-
-		//	descriptionEntry.Focus();
-		//	descriptionEntry.Unfocus();
-
-		//	coordinatorName.Focus();
-		//	coordinatorName.Unfocus();
-
-		//	coordinatorPhone.Focus();
-		//	coordinatorPhone.Unfocus();
-
-		//	startDate.Focus();
-		//	startDate.Unfocus();
-
-		//	volunteersRequired.Focus();
-		//	volunteersRequired.Unfocus();
-		//}
 
         protected void nameEntry_Focused(object sender, FocusEventArgs e)
         {

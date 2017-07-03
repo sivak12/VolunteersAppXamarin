@@ -4,6 +4,7 @@
 
 
       <ContentPage.ToolbarItems>
+            <ToolbarItem  x:Name="labelUsername"/>
             <ToolbarItem Text="Refresh" Icon="refresh.png" Clicked="OnRefresh" />
       </ContentPage.ToolbarItems>
 

@@ -33,7 +33,9 @@ namespace LetsWork
 				if (rootPage != null)
 				{
 					App.IsUserLoggedIn = true;
-                    Navigation.InsertPageBefore(new TaskListPage(), Navigation.NavigationStack.First());
+					App.Username = usernameEntry.Text;
+
+					Navigation.InsertPageBefore(new TaskListPage(), Navigation.NavigationStack.First());
                     await Navigation.PopToRootAsync();
 				}
 			}
@@ -46,7 +48,7 @@ namespace LetsWork
 
 		bool AreDetailsValid(LoginUser loginUser)
 		{
-			return (!string.IsNullOrWhiteSpace(loginUser.Name) && !string.IsNullOrWhiteSpace(loginUser.Password) && !string.IsNullOrWhiteSpace(loginUser.Email) && loginUser.Email.Contains("@"));
+			return (!string.IsNullOrWhiteSpace(loginUser.Username) && !string.IsNullOrWhiteSpace(loginUser.Password) && !string.IsNullOrWhiteSpace(loginUser.Email) && loginUser.Email.Contains("@"));
 		}
 	}
 }
