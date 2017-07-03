@@ -8,13 +8,33 @@ namespace LetsWork
 {
     public class App : Application
     {
-        public App()
+
+		public static bool IsUserLoggedIn { get; set; }
+
+		public App()
         {
 
-			//MainPage = new NavigationPage(content);
-			MainPage = CrossConnectivity.Current.IsConnected
-				? (Page) new NavigationPage(new TaskListPage())
+			if (!IsUserLoggedIn)
+			{
+				//MainPage = new NavigationPage(new LoginPage());
+				MainPage = CrossConnectivity.Current.IsConnected
+				? (Page)new NavigationPage(new LoginPage())
 				: new NoNetworkPage();
+
+			}
+			else
+			{
+				MainPage = CrossConnectivity.Current.IsConnected
+				? (Page)new NavigationPage(new TaskListPage())
+				: new NoNetworkPage();
+
+                //MainPage = new NavigationPage(new LoginNavigation.MainPage());
+			}
+
+			//MainPage = new NavigationPage(content);
+			//MainPage = CrossConnectivity.Current.IsConnected
+				//? (Page) new NavigationPage(new TaskListPage())
+				//: new NoNetworkPage();
 
 		}
 
